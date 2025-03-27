@@ -9,8 +9,8 @@ export const config = {
 	],
 
 	social: {
-		x: "https://x.com/yourstore",
-		facebook: "https://facebook.com/yourstore",
+		x: "https://x.com/s2yhealth",
+		facebook: "https://facebook.com/s2yhealth",
 	},
 
 	contact: {

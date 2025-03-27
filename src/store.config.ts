@@ -3,7 +3,8 @@ import ApparelImage from "@/images/apparel.jpg";
 
 export const config = {
 	categories: [
-		{ name: "Apparel", slug: "apparel", image: ApparelImage },
+		{ name: "Solutions", slug: "solution", image: ApparelImage },
+		{ name: "Electrolyte", slug: "electrolyte", image: ApparelImage },
 		{ name: "Accessories", slug: "accessories", image: AccessoriesImage },
 	],
 
@@ -13,9 +14,9 @@ export const config = {
 	},
 
 	contact: {
-		email: "support@yourstore.com",
-		phone: "+1 (555) 111-4567",
-		address: "123 Store Street, City, Country",
+		email: "support@s2y.us",
+		phone: "+1 (678) 792-8330",
+		address: "8 The Green STE B Dover, DE 19901",
 	},
 };
 

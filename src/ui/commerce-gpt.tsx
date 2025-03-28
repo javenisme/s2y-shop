@@ -63,13 +63,6 @@ export function CommerceGPT() {
 							</Button>
 						</div>
 					</div>
-					<YnsLink
-						className="bg-black rounded-full text-white px-4 py-1 text-sm"
-						href="https://github.com/yournextstore/yournextstore"
-						target="_blank"
-					>
-						View on GitHub
-					</YnsLink>
 				</div>
 			</div>
 			<div
@@ -87,7 +80,7 @@ export function CommerceGPT() {
 										<span className="bg-linear-to-r from-orange-500 via-red-500 to-red-600 text-transparent bg-clip-text">
 											Commerce GPT
 										</span>{" "}
-										in Your Next Store
+										in S2Y
 									</h3>
 									<div className="flex flex-wrap justify-center gap-2 w-full">
 										<Button

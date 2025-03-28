@@ -9,7 +9,7 @@ export default function LoginPage() {
 					<div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
 						<ShirtIcon className="size-4" />
 					</div>
-					ACME Inc.
+					S2Y, LLC
 				</a>
 				<LoginForm />
 			</div>

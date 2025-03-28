@@ -121,7 +121,7 @@
 		"*": ["pnpm biome check --write --staged --no-errors-on-unmatched --files-ignore-unknown=true"]
 	},
 	"pnpm": {
-		"ignoredBuiltDependencies": ["@vercel/speed-insights"],
+		"ignoredBuiltDependencies": ["@biomejs/biome", "@vercel/speed-insights", "esbuild", "sharp"],
 		"onlyBuiltDependencies": ["@vercel/speed-insights"]
 	}
 }

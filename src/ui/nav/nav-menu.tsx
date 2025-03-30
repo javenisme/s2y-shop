@@ -12,10 +12,6 @@ const links = [
 		href: `/category/${slug}`,
 	})),
 	{
-		label: "Blog",
-		href: "/blog",
-	},
-	{
 		label: "Digital",
 		href: "/category/digital",
 	},

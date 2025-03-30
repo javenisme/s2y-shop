@@ -19,7 +19,6 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": false,
 		"noUncheckedIndexedAccess": true,
-		"baseUrl": ".",
 		"plugins": [
 			{
 				"name": "next"
@@ -28,18 +27,9 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@ui/*": ["./src/ui/*"],
-			"@/components/ui/*": ["./src/ui/shadcn/*"],
-			"contentlayer/generated": ["./.contentlayer/generated"]
+			"@/components/ui/*": ["./src/ui/shadcn/*"]
 		}
 	},
-	"include": [
-		"next-fix.d.ts",
-		"i18n.d.ts",
-		"**/*.mjs",
-		"**/*.ts",
-		"**/*.tsx",
-		".next/types/**/*.ts",
-		".contentlayer/generated"
-	],
+	"include": ["next-fix.d.ts", "i18n.d.ts", "**/*.mjs", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules", "src/script/**/*.ts"]
 }

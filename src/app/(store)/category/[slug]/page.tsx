@@ -1,6 +1,7 @@
 import { publicUrl } from "@/env.mjs";
-import { getTranslations } from "@/i18n/server";
+import { getLocale, getTranslations } from "@/i18n/server";
 import { deslugify } from "@/lib/utils";
+import { JsonLd, mappedProductsToJsonLd } from "@/ui/json-ld";
 import { ProductList } from "@/ui/products/product-list";
 import * as Commerce from "commerce-kit";
 import { notFound } from "next/navigation";
@@ -41,6 +42,7 @@ export default async function CategoryPage(props: {
 	}
 
 	const t = await getTranslations("/category.page");
+	const locale = await getLocale();
 
 	return (
 		<main className="pb-8">
@@ -50,7 +52,8 @@ export default async function CategoryPage(props: {
 					{t("title", { categoryName: deslugify(params.slug) })}
 				</div>
 			</h1>
-			<ProductList products={products} />
+			<ProductList products={products} locale={locale} />
+			<JsonLd jsonLd={mappedProductsToJsonLd(products)} />
 		</main>
 	);
 }

@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { CurrencySelector } from "@/components/currency-selector";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartModalProvider } from "@/context/cart-modal";
 import { Footer } from "@/ui/footer/footer";
@@ -27,6 +28,7 @@ export default async function StoreLayout({
 						<CartModalPage />
 					</main>
 					<Footer />
+					<CurrencySelector />
 				</TooltipProvider>
 			</CartModalProvider>
 			<JsonLd

@@ -59,18 +59,39 @@ export async function addToCartAction(formData: FormData) {
 		throw new Error("Invalid product ID");
 	}
 
-	const cart = await getCartFromCookiesAction();
+	let cart = await getCartFromCookiesAction();
+	let cartId: string;
 
-	const updatedCart = await Commerce.cartAdd({ productId, cartId: cart?.cart.id });
-
-	if (updatedCart) {
+	if (!cart) {
+		const newCart = await Commerce.cartCreate();
+		cartId = newCart.id;
 		await setCartCookieJson({
-			id: updatedCart.id,
-			linesCount: Commerce.cartCount(updatedCart.metadata),
+			id: cartId,
+			linesCount: 0,
 		});
+	} else {
+		cartId = cart.cart.id;
+	}
 
-		revalidateTag(`cart-${updatedCart.id}`);
-		return structuredClone(updatedCart);
+	try {
+		const updatedCart = await Commerce.cartAdd({ productId, cartId });
+
+		if (updatedCart) {
+			await setCartCookieJson({
+				id: updatedCart.id,
+				linesCount: Commerce.cartCount(updatedCart.metadata),
+			});
+
+			revalidateTag(`cart-${updatedCart.id}`);
+			return structuredClone(updatedCart);
+		}
+	} catch (error) {
+		if (error instanceof Error && error.message.includes("currency")) {
+			throw new Error(
+				"Cannot mix different currencies in the same cart. Please empty your cart first or choose a product with the same currency.",
+			);
+		}
+		throw error;
 	}
 }
 

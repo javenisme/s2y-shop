@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { StagewiseToolbarClient } from "@/components/stagewise-toolbar";
 import { Toaster } from "@/components/ui/sonner";
 import { env, publicUrl } from "@/env.mjs";
 import { IntlClientProvider } from "@/i18n/client";
@@ -24,6 +25,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 	return (
 		<html lang={locale} className="h-full antialiased">
 			<body className="flex min-h-full flex-col">
+				<StagewiseToolbarClient />
 				<IntlClientProvider messages={messages} locale={locale}>
 					<div className="flex min-h-full flex-1 flex-col bg-white" vaul-drawer-wrapper="">
 						{children}
@@ -34,7 +36,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 					<Script
 						async
 						src="/stats/script.js"
-						data-host-url={publicUrl + "/stats"}
+						data-host-url={env.NEXT_PUBLIC_URL + "/stats"}
 						data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
 					/>
 				)}

@@ -1,7 +1,5 @@
 import { publicUrl } from "@/env.mjs";
-import { getTranslations } from "@/i18n/server";
-import StoreConfig from "@/store.config";
-import { CategoryBox } from "@/ui/category-box";
+import { getLocale, getTranslations } from "@/i18n/server";
 import { ProductList } from "@/ui/products/product-list";
 import { YnsLink } from "@/ui/yns-link";
 import * as Commerce from "commerce-kit";
@@ -15,6 +13,7 @@ export const metadata = {
 export default async function Home() {
 	const products = await Commerce.productBrowse({ first: 6 });
 	const t = await getTranslations("/");
+	const locale = await getLocale();
 
 	return (
 		<main>
@@ -37,7 +36,7 @@ export default async function Home() {
 						className="rounded"
 						height={450}
 						width={450}
-						src="https://files.stripe.com/links/MDB8YWNjdF8xT3BaeG5GSmNWbVh6bURsfGZsX3Rlc3RfaDVvWXowdU9ZbWlobUIyaHpNc1hCeDM200NBzvUjqP"
+						src="https://s2yhealth.com/s2y_cup_3262.webp"
 						style={{
 							objectFit: "cover",
 						}}
@@ -46,15 +45,7 @@ export default async function Home() {
 				</div>
 			</section>
 
-			<ProductList products={products} />
-
-			<section className="w-full py-8">
-				<div className="grid gap-8 lg:grid-cols-2">
-					{StoreConfig.categories.map(({ slug, image: src }) => (
-						<CategoryBox key={slug} categorySlug={slug} src={src} />
-					))}
-				</div>
-			</section>
+			<ProductList products={products} locale={locale} />
 		</main>
 	);
 }

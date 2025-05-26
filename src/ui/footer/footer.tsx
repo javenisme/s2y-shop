@@ -16,14 +16,6 @@ const sections = [
 		header: "Support",
 		links: [
 			{
-				label: "Features",
-				href: "https://s2yhealth.com/",
-			},
-			{
-				label: "Pricing",
-				href: "https://s2yhealth.com/",
-			},
-			{
 				label: "Contact Us",
 				href: "mailto:hi@s2yhealth.com",
 			},

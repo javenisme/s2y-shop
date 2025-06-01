@@ -5,6 +5,7 @@ import { YnsLink } from "@/ui/yns-link";
 import type * as Commerce from "commerce-kit";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const ProductList = ({ products, locale }: { products: Commerce.MappedProduct[]; locale: string }) => {
 	const [filteredProducts, setFilteredProducts] = useState(products);

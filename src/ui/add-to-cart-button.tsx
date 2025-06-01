@@ -6,6 +6,7 @@ import { useTranslations } from "@/i18n/client";
 import { cn } from "@/lib/utils";
 import { Loader2Icon } from "lucide-react";
 import { useTransition } from "react";
+import { toast } from "sonner";
 
 export const AddToCartButton = ({
 	productId,
@@ -36,9 +37,17 @@ export const AddToCartButton = ({
 				setOpen(true);
 
 				startTransition(async () => {
-					const formData = new FormData();
-					formData.append("productId", productId);
-					await addToCartAction(formData);
+					try {
+						const formData = new FormData();
+						formData.append("productId", productId);
+						await addToCartAction(formData);
+					} catch (error) {
+						if (error instanceof Error && error.message.includes("Cannot mix different currencies")) {
+							toast.error("购物车中不能混合不同币种的商品，请先清空购物车或选择相同币种的商品。");
+						} else {
+							toast.error("添加到购物车失败，请重试。");
+						}
+					}
 				});
 			}}
 			aria-disabled={isDisabled}

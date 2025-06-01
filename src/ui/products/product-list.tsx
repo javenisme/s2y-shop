@@ -8,12 +8,10 @@ import { useEffect, useState } from "react";
 
 export const ProductList = ({ products, locale }: { products: Commerce.MappedProduct[]; locale: string }) => {
 	const [filteredProducts, setFilteredProducts] = useState(products);
-	const [currency, setCurrency] = useState("usd");
 
 	useEffect(() => {
 		// Get preferred currency from localStorage
 		const preferredCurrency = localStorage.getItem("preferredCurrency") || "usd";
-		setCurrency(preferredCurrency);
 
 		// Filter products based on currency
 		const filtered = products.filter(
@@ -26,7 +24,6 @@ export const ProductList = ({ products, locale }: { products: Commerce.MappedPro
 	useEffect(() => {
 		const handleStorageChange = () => {
 			const newCurrency = localStorage.getItem("preferredCurrency") || "usd";
-			setCurrency(newCurrency);
 			const filtered = products.filter(
 				(product) => product.default_price.currency.toLowerCase() === newCurrency,
 			);
